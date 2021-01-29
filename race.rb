@@ -5,7 +5,7 @@ intro.hello()
 
 player_name = intro.name
 
-middle = Board.new()
+middle = GameCar.new()
 middle.choice(player_name)
 
 player_card = middle.card
