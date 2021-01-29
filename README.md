@@ -1,2 +1,2 @@
 # racecar
-a mini game with python
+a mini game made out of ruby
