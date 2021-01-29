@@ -19,10 +19,10 @@ class Board
         shape = gets.chomp()
         while !ready
             if shape == "a" or shape == "spade"
-                @card == "Spade"
+                @card = "Spade"
                 ready = true
             elsif shape == "b" or shape == "heart"
-                @card == "Heart"
+                @card = "Heart"
                 ready = true
             elsif shape == "c" or shape == "clover"
                 @card = "Clover"
