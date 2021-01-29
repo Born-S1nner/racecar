@@ -8,7 +8,7 @@ class Gamer
     end
 end
 
-class Board
+class GameCar
     attr :card
     def choice(name)
         questi = "Choose your card, #{name}:\n(a) Spade\n(b) Heart\n(c) Clover\n(d) Diamond"
