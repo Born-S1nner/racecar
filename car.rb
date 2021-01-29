@@ -35,17 +35,5 @@ class GameCar
                 shape = gets.chomp()
             end
         end
-            if shape == "a" or shape == "spade"
-                @card == "Spade"
-            elsif shape == "b" or shape == "heart"
-                @card == "Heart"
-            elsif shape == "c" or shape == "clover"
-                @card = "Clover"
-            elsif shape == "d" or shape == "diamond"
-                @card = "Diamond"
-            else
-                puts "Not an option, pick a card"
-                gets.chomp()
-            end
     end
 end
