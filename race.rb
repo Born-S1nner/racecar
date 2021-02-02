@@ -28,13 +28,12 @@ class Game_set < Gosu::Window
         end
         if Gosu.button_down? Gosu::KB_A or Gosu::button_down? Gosu::GP_UP
             @racer.accel
-            @background_image.accel
         end
         
         if Gosu.button_down? Gosu::KB_S or Gosu::button_down? Gosu::GP_DOWN
-            @racer.rever
-            @background_image.rever
+            @racer.brake
         end
+        @racer.move()
     end
     def draw
         @racer.draw
