@@ -1,29 +1,35 @@
-class GameCar
-    attr :card
-    def choice(name)
-        questi = "Choose your card, #{name}:\n(a) Spade\n(b) Heart\n(c) Clover\n(d) Diamond"
-        shape = ""
-        ready = false
 
-        puts questi
-        shape = gets.chomp()
-        while !ready
-            if shape == "a" or shape == "spade"
-                @card = "Spade"
-                ready = true
-            elsif shape == "b" or shape == "heart"
-                @card = "Heart"
-                ready = true
-            elsif shape == "c" or shape == "clover"
-                @card = "Clover"
-                ready = true
-            elsif shape == "d" or shape == "diamond"
-                @card = "Diamond"
-                ready = true
-            else
-                puts "Not an option, pick a card"
-                shape = gets.chomp()
-            end
+class GameCar
+    attr_reader :x, :y, :angle
+    attr_accessor :speed
+    def initialize
+        @image = Gosu::Image.new("src/media/redcar.png")
+        @x = 0.0
+        @y = 0.0
+        @angle = 0.0
+        @speed_limit = 538
+    end
+    def wrap(x, y)
+        @x = x
+        @y = y
+    end
+    def left
+        @y += 1
+    end
+    def right
+        @y -= 1
+    end
+    def accel
+        if x < @speed_limit
+            @x += 2
+        else
+            @x = @speed_limit
         end
+    end
+    def rever
+        @x -= 1
+    end
+    def draw
+        @image.draw_rot(@x, @y, ZOrder::CAR, @angle)
     end
 end
