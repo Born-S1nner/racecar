@@ -2,22 +2,26 @@ require 'gosu'
 
 require_relative "src/car.rb"
 require_relative "src/road.rb"
-require_relative "src/player.rb"
-
+=begin
 intro = Gamer.new()
 intro.hello()
-
+=end
 module ZOrder
-    BACKGROUND, CAR = *0..5
+    BACKGROUND, RINGS, CAR = *0..3
 end
 
 class Game_set < Gosu::Window
     def initialize
         super 640, 480
         self.caption = "Ruby Racer"
+
         @racer = GameCar.new()
         @racer.wrap(190, 150)
+
         @background_image = Road.new()
+
+        @ring_anim = Gosu::Image.load_tiles("src/media/ringer.png", 51, 47)
+        @rings = Array.new
     end
     def update
         if Gosu.button_down? Gosu::KB_LEFT or Gosu::button_down? Gosu::GP_LEFT
@@ -26,18 +30,24 @@ class Game_set < Gosu::Window
         if Gosu.button_down? Gosu::KB_RIGHT or Gosu::button_down? Gosu::GP_RIGHT
             @racer.right
         end
-        if Gosu.button_down? Gosu::KB_A or Gosu::button_down? Gosu::GP_UP
+        if Gosu.button_down? Gosu::KB_UP or Gosu::button_down? Gosu::GP_UP
             @racer.accel
+            #@background_image.accel
         end
-        
-        if Gosu.button_down? Gosu::KB_S or Gosu::button_down? Gosu::GP_DOWN
+        if Gosu.button_down? Gosu::KB_DOWN or Gosu::button_down? Gosu::GP_DOWN
             @racer.brake
+            #@background_image.rever
         end
         @racer.move()
+        @racer.collect_rings(@rings)
+        if rand(100) < 4 and @rings.size < 25
+            @rings.push(Ring.new(@ring_anim))
+        end
     end
     def draw
-        @racer.draw
         @background_image.draw()
+        @racer.draw
+        @rings.each { |ring| ring.draw}
     end
 end
 
