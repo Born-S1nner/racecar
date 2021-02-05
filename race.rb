@@ -2,10 +2,7 @@ require 'gosu'
 
 require_relative "src/car.rb"
 require_relative "src/road.rb"
-=begin
-intro = Gamer.new()
-intro.hello()
-=end
+
 module ZOrder
     BACKGROUND, RINGS, CAR = *0..3
 end
@@ -32,11 +29,9 @@ class Game_set < Gosu::Window
         end
         if Gosu.button_down? Gosu::KB_UP or Gosu::button_down? Gosu::GP_UP
             @racer.accel
-            #@background_image.accel
         end
         if Gosu.button_down? Gosu::KB_DOWN or Gosu::button_down? Gosu::GP_DOWN
             @racer.brake
-            #@background_image.rever
         end
         @racer.move()
         @racer.collect_rings(@rings)
