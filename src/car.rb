@@ -55,6 +55,6 @@ class GameCar
         @score
     end
     def collect_rings(rings)
-        rings.reject! { |ring| Gosu.distance(@x, @y, 51, 47) < 35 }
+        rings.reject! { |ring| Gosu.distance(@x, @y, ring.x, ring.y) < 35 }
     end
 end
