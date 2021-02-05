@@ -5,15 +5,6 @@ class Road
         @x = @y = 0.0
         #@speed = 3.0
     end
-=begin
-    def accel
-        @x += @speed
-    end
-    def rever
-        @x -=speed
-        @x -= WIDTH * 2 if @x >= WIDTH
-    end
-=end
     def draw
         @background_image.draw(@x, @y, ZOrder::BACKGROUND)
     end
@@ -24,8 +15,8 @@ class Ring
     def initialize(animation)
         @animation = animation
         @color = Gosu::Color::YELLOW.dup
-        @x = rand * 640
-        @y = rand * 480
+        @x = rand * 590
+        @y = rand * 430
     end
     def draw
         ring = @animation[Gosu.milliseconds / 100 % @animation.size]
