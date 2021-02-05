@@ -2,7 +2,6 @@ require 'gosu'
 
 require_relative "src/car.rb"
 require_relative "src/road.rb"
-
 module ZOrder
     BACKGROUND, RINGS, CAR = *0..3
 end
@@ -35,7 +34,7 @@ class Game_set < Gosu::Window
         end
         @racer.move()
         @racer.collect_rings(@rings)
-        if rand(100) < 4 and @rings.size < 25
+        if rand(300) < 4 and @rings.size < 25
             @rings.push(Ring.new(@ring_anim))
         end
     end
