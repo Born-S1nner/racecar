@@ -17,7 +17,6 @@ class GameCar
         else
             @y = 20
         end
-        puts @y
     end
     def right
         if @y < 430
