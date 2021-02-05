@@ -1,11 +1,10 @@
-
 class GameCar
-    attr_reader :x, :y, :angle
+    attr_reader :x, :y
     attr_accessor :speed
     def initialize
         @image = Gosu::Image.new("src/media/redcar.png")
-        @x = @y = @angle = 0.0
-        @speed_min = 180
+        @x = @y = 0
+        @speed_min = 40
         @speed_limit = 590
         @score = 0
     end
@@ -13,22 +12,23 @@ class GameCar
         @x, @y = x, y
     end
     def left
-        if @y > 150
+        if @y > 20
             @y -= 4
         else
-            @y = 150
+            @y = 20
         end
+        puts @y
     end
     def right
-        if @y < 438
+        if @y < 430
             @y += 4
         else
-            @y = 438
+            @y = 430
         end
     end
     def accel
         if x < @speed_limit
-            @x += 2
+            @x += 4
         else
             @x = @speed_limit
         end
@@ -41,14 +41,14 @@ class GameCar
         end
     end
     def move
-        if x < @speed_limit
-            @x += 1
+        if x > @speed_min
+            @x -= 1
         else
-            @x = @speed_limit
+            @x = @speed_min
         end
     end
     def draw
-        @image.draw_rot(@x, @y, ZOrder::CAR, @angle)
+        @image.draw_rot(@x, @y, ZOrder::CAR, 0)
     end
     
     def score
