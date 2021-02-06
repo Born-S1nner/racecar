@@ -3,7 +3,7 @@ require 'gosu'
 require_relative "src/car.rb"
 require_relative "src/road.rb"
 module ZOrder
-    BACKGROUND, RINGS, CAR = *0..3
+    BACKGROUND, RINGS, CAR, UI = *0..3
 end
 
 class Game_set < Gosu::Window
@@ -15,6 +15,7 @@ class Game_set < Gosu::Window
         @racer.wrap(190, 150)
 
         @background_image = Road.new()
+        @font = Gosu::Font.new(20)
 
         @ring_anim = Gosu::Image.load_tiles("src/media/ringer.png", 51, 47)
         @rings = Array.new
@@ -42,6 +43,7 @@ class Game_set < Gosu::Window
         @background_image.draw()
         @racer.draw
         @rings.each { |ring| ring.draw}
+        @font.draw_text("Score: #{@racer.score}", 10, 10, ZOrder::UI, 2.0, 2.0, Gosu::Color::AQUA)
     end
 end
 
