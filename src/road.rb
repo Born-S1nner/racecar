@@ -3,7 +3,6 @@ class Road
     def initialize()
         @background_image = Gosu::Image.new("src/media/background.png", :tileable => true)
         @x = @y = 0.0
-        #@speed = 3.0
     end
     def draw
         @background_image.draw(@x, @y, ZOrder::BACKGROUND)
@@ -16,7 +15,7 @@ class Ring
         @animation = animation
         @color = Gosu::Color::YELLOW.dup
         @x = rand * 590
-        @y = rand * 430
+        @y = rand * 410
     end
     def draw
         ring = @animation[Gosu.milliseconds / 100 % @animation.size]
