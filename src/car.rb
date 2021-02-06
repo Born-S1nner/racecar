@@ -1,10 +1,11 @@
 class GameCar
+    attr_reader :score
     def initialize
         @image = Gosu::Image.new("src/media/car.bmp")
         @x = @y = 0
         @speed_min = 40
         @speed_limit = 593
-        @score = 0
+        @score = 00
     end
     def wrap(x, y)
         @x, @y = x, y
@@ -54,7 +55,7 @@ class GameCar
     def collect_rings(rings)
         rings.reject! do |ring|
             if Gosu.distance(@x, @y, ring.x, ring.y) < 35
-                score += 10
+                @score += 10
                 true
             else
                 false
