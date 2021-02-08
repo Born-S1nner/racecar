@@ -2,6 +2,8 @@ require 'gosu'
 
 require_relative "src/car.rb"
 require_relative "src/road.rb"
+require_relative "src/game.rb"
+
 module ZOrder
     BACKGROUND, RINGS, CAR, UI = *0..3
 end
