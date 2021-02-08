@@ -48,6 +48,20 @@ class GameCar
     def draw
         @image.draw_rot(@x, @y, ZOrder::CAR, 0)
     end
+    def control(racer)
+        if Gosu.button_down? Gosu::KB_LEFT or Gosu::button_down? Gosu::GP_LEFT
+            racer.left
+        end
+        if Gosu.button_down? Gosu::KB_RIGHT or Gosu::button_down? Gosu::GP_RIGHT
+            racer.right
+        end
+        if Gosu.button_down? Gosu::KB_UP or Gosu::button_down? Gosu::GP_UP
+            racer.accel
+        end
+        if Gosu.button_down? Gosu::KB_DOWN or Gosu::button_down? Gosu::GP_DOWN
+            racer.brake
+        end
+    end
     
     def score
         @score
