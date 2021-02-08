@@ -1,7 +1,7 @@
 class Done
     attr_reader :score, :end_game
     def initialize
-        @goal = 10
+        @goal = 100
         @end_game = false
     end
     def game_over(score)
