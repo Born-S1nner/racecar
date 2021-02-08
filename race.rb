@@ -42,8 +42,12 @@ class Game_set < Gosu::Window
     def draw
         @background_image.draw()
         @racer.draw
-        @rings.each { |ring| ring.draw}
-        @font.draw_text("Score: #{@racer.score}", 10, 10, ZOrder::UI, 2.0, 2.0, Gosu::Color::AQUA)
+        if @gameOver.end_game == false
+            @racer.draw
+            @rings.each { |ring| ring.draw}
+        else
+            @font.draw_text("Game Over", 150, 200, ZOrder::UI, 4.0, 4.0, Gosu::Color::YELLOW)
+        end
     end
 end
 
