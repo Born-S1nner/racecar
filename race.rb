@@ -25,18 +25,7 @@ class Game_set < Gosu::Window
         @gameOver = Done.new()
     end
     def update
-        if Gosu.button_down? Gosu::KB_LEFT or Gosu::button_down? Gosu::GP_LEFT
-            @racer.left
-        end
-        if Gosu.button_down? Gosu::KB_RIGHT or Gosu::button_down? Gosu::GP_RIGHT
-            @racer.right
-        end
-        if Gosu.button_down? Gosu::KB_UP or Gosu::button_down? Gosu::GP_UP
-            @racer.accel
-        end
-        if Gosu.button_down? Gosu::KB_DOWN or Gosu::button_down? Gosu::GP_DOWN
-            @racer.brake
-        end
+        @racer.control(@racer)
         @racer.move()
         @racer.collect_rings(@rings)
         if rand(300) < 4 and @rings.size < 25
