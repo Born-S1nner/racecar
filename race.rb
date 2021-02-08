@@ -19,6 +19,8 @@ class Game_set < Gosu::Window
 
         @ring_anim = Gosu::Image.load_tiles("src/media/ringer.png", 51, 47)
         @rings = Array.new
+        
+        @gameOver = Done.new()
     end
     def update
         if Gosu.button_down? Gosu::KB_LEFT or Gosu::button_down? Gosu::GP_LEFT
@@ -38,6 +40,7 @@ class Game_set < Gosu::Window
         if rand(300) < 4 and @rings.size < 25
             @rings.push(Ring.new(@ring_anim))
         end
+        @gameOver.game_over(@racer.score)
     end
     def draw
         @background_image.draw()
