@@ -22,7 +22,7 @@ class Race_game < Gosu::Window
         @ring_anim = Gosu::Image.load_tiles("src/media/ringer.png", 51, 47)
         @rings = Array.new
 
-        @gameOver = Done.new()
+        @overdone = Finish_goal.new()
     end
     def update
         @car.control(@car)
@@ -36,7 +36,7 @@ class Race_game < Gosu::Window
     def draw
         @background_image.draw()
         @font.draw_text("Score: #{@car.score}", 10, 10, ZOrder::UI, 2.0, 2.0, Gosu::Color::AQUA)
-        if @gameOver.end_game == false
+        if @overdone.end_game == false
             @car.draw
             @rings.each { |ring| ring.draw}
         else
