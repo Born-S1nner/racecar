@@ -44,3 +44,5 @@ class Race_game < Gosu::Window
         end
     end
 end
+
+Race_game.new.show
