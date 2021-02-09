@@ -13,7 +13,7 @@ class Race_game < Gosu::Window
         super 640, 480
         self.caption = "Ruby Ring Race"
 
-        @car = GameCar.new()
+        @car = Race_car.new()
         @car.wrap(190, 150)
 
         @background_image = Road.new()
