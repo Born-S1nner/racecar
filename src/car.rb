@@ -1,4 +1,4 @@
-class GameCar
+class Race_car
     attr_reader :score
     def initialize
         @image = Gosu::Image.new("src/media/car.bmp")
